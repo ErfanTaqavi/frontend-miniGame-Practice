@@ -43,7 +43,7 @@ btnRoll.addEventListener('click', function(){
         diceEl.src = `dice-${dice}.png`
 
         //Check for rolled 1
-        if(dice !== 1){
+        if(dice === 1){
 
             currentScore += dice
             document.getElementById(`current--${activeplayer}`).textContent =currentScore
@@ -56,18 +56,24 @@ btnRoll.addEventListener('click', function(){
 //hold the current score to scores array
 btnHold.addEventListener('click',function(){
     if(playing){
+      // 1. Add current score to active player's score
+      scores[activeplayer] += currentScore;
+      // scores[1] = scores[1] + currentScore
+  
+      document.getElementById(`score--${activeplayer}`).textContent =
+        scores[activeplayer];
     
+        //switch player if player dont give 100 scores else this player winner
+        if (scores[activeplayer] >= 50){
+        playing = false
+        document.querySelector(`.player--${activeplayer}`).classList.add('player--winner')
+        document.querySelector(`.player--${activeplayer}`).classList.remove('player--active')
+        diceEl.classList.add('hidden')
+    
+        }else{
+         switchplayer();
+        }
     }
-//switch player if player dont give 100 scores else this player winner
-if (scores[activeplayer] >= 10){
-    playing = false
-    document.querySelector(`.player--${activeplayer}`).classList.add('player--winner')
-    document.querySelector(`.player--${activeplayer}`).classList.remove('player--active')
-    diceEl.classList.add('hidden')
-   
-}else{
-    switchplayer();
-}
 })
 
 
