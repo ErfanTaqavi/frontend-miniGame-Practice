@@ -67,7 +67,7 @@ btnHold.addEventListener('click', function () {
       scores[activeplayer];
 
     //switch player if player dont give 100 scores else this player winner
-    if (scores[activeplayer] >= 10) {
+    if (scores[activeplayer] >= 50) {
       playing = false;
       document
         .querySelector(`.player--${activeplayer}`)
@@ -78,8 +78,7 @@ btnHold.addEventListener('click', function () {
       diceEl.classList.add('hidden');
    
     setTimeout(() => {
-        alert(`player 
-        ${activeplayer+1} win the Match 🏆`)
+        alert(`player ${activeplayer+1} win the Match 🏆`)
     }, 2000);
     } else {
       switchplayer();
