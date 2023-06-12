@@ -20,6 +20,9 @@ let activeplayer = 0;
 let playing = true;
 
 
+window.onload =setTimeout(() => {
+    alert(`Hello. You can play and whoever gets 50 points first is the winner 🎉🎈`)
+}, 2000);
 
 const switchplayer = function () {
   document.getElementById(`current--${activeplayer}`).textContent = 0;
@@ -64,7 +67,7 @@ btnHold.addEventListener('click', function () {
       scores[activeplayer];
 
     //switch player if player dont give 100 scores else this player winner
-    if (scores[activeplayer] >= 50) {
+    if (scores[activeplayer] >= 10) {
       playing = false;
       document
         .querySelector(`.player--${activeplayer}`)
@@ -73,7 +76,11 @@ btnHold.addEventListener('click', function () {
         .querySelector(`.player--${activeplayer}`)
         .classList.remove('player--active');
       diceEl.classList.add('hidden');
-    //   alert(`player--${activeplayer} win the Match 🏆`)
+   
+    setTimeout(() => {
+        alert(`player 
+        ${activeplayer+1} win the Match 🏆`)
+    }, 2000);
     } else {
       switchplayer();
     }
