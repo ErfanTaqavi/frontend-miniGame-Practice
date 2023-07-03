@@ -96,5 +96,6 @@ btnNew.addEventListener('click',function(){
      playing = true
      document.querySelector(`.player--${activeplayer}`).classList.remove('player--winner')
      document.querySelector(`.player--${activeplayer}`).classList.add('player--active')
+    diceEl.classList.add('hidden');
 
 })
